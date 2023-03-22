@@ -29,20 +29,18 @@ function App() {
   if (isFocusing && seconds <= 0){
     setIsFocusing(false);
     setSeconds(restSeconds);
-    console.log('cambiando a descanso');
     audio.play();
   } else if ( !isFocusing && seconds <= 0){
     setIsFocusing(true);
     setSeconds(initialSeconds);
-    console.log('cambiando a trabajo');
     audio.play();
   }
-
 
   return (
     <div >
       <h1 className='text-white text-6xl text-center font-bold'>Pomodoro App</h1>
-      <Timer seconds={seconds} />
+      <Timer seconds={seconds} isFocusing={isFocusing} />
+      
       {isFocusing?
         <h2 className=' text-orange-500 text-center font-bold text-3xl ' > Happy Working! 💻</h2>:
         <h2 className=' text-green-600 text-center font-bold text-3xl '> Take a break! ☕</h2>
@@ -53,8 +51,8 @@ function App() {
         <Buttons text={'Pause'} onPress={onStop} />
         <Buttons text={'Restart'} onPress={onRestart} />
       </div>
-      <footer class="flex justify-center mt-5 text-white">
-        Pomodoro App by <a href="https://github.com/Yiyeh" class="mx-2 text-teal-500 font-bold">Yiyeh</a>
+      <footer className="flex justify-center mt-5 text-white">
+        Pomodoro App by <a href="https://github.com/Yiyeh" className="mx-2 text-teal-500 font-bold">Yiyeh</a>
       </footer>
     </div>
   );
