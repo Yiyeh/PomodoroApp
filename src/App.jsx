@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Timer } from './components/Timer';
 import { Buttons } from './components/Buttons';
+import soundFile from './sound/ding.mp3';
 
 
 function App() {
 
-  
+  const audio = new Audio(soundFile);
 
   let initialSeconds = 1500;
   let restSeconds = 300;
@@ -29,10 +30,12 @@ function App() {
     setIsFocusing(false);
     setSeconds(restSeconds);
     console.log('cambiando a descanso');
+    audio.play();
   } else if ( !isFocusing && seconds <= 0){
     setIsFocusing(true);
     setSeconds(initialSeconds);
     console.log('cambiando a trabajo');
+    audio.play();
   }
 
 
