@@ -1,6 +1,4 @@
 
-import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
-
 export const Timer = ({seconds}) => {
 
     const minutos = Math.floor(seconds / 60); // 25
