@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { Timer } from './components/Timer';
 import { Buttons } from './components/Buttons';
 
+
 function App() {
 
-  let initialSeconds = 10;
-  let restSeconds = 5;
+  
+
+  let initialSeconds = 1500;
+  let restSeconds = 300;
 
   const [seconds, setSeconds] = useState(initialSeconds);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,19 +37,23 @@ function App() {
 
 
   return (
-    <>
-      <h1>Pomodoro App</h1>
+    <div >
+      <h1 className='text-white text-6xl text-center font-bold'>Pomodoro App</h1>
       <Timer seconds={seconds} />
       {isFocusing?
-        <h2>Happy Working!</h2>:
-        <h2>Rest!</h2>
+        <h2 className=' text-orange-500 text-center font-bold text-3xl ' > Happy Working! 💻</h2>:
+        <h2 className=' text-green-600 text-center font-bold text-3xl '> Take a break! ☕</h2>
       }
-      <div className='buttonsContainer'>
+
+      <div className=' flex justify-center mt-3' >
         <Buttons text={'Play'} onPress={onPlay} />
         <Buttons text={'Pause'} onPress={onStop} />
         <Buttons text={'Restart'} onPress={onRestart} />
       </div>
-    </>
+      <footer class="flex justify-center mt-5 text-white">
+        Pomodoro App by <a href="https://github.com/Yiyeh" class="mx-2 text-teal-500 font-bold">Yiyeh</a>
+      </footer>
+    </div>
   );
 }
 
